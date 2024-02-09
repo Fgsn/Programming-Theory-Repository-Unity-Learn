@@ -9,19 +9,20 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int live = 10;
     [SerializeField] public int damage { get; private set; } = 5;
 
-    private PlayerController player;
+    private PlayerController playerController;
 
-    private void Start()
+    public void Init(PlayerController player)
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerController = player;
     }
+
     private void Update()
     {
         Chase();
     }
     public void Chase()
     {
-        Vector2 moveDirection = (player.transform.position - transform.position).normalized;
+        Vector2 moveDirection = (playerController.transform.position - transform.position).normalized;
 
         transform.Translate(moveDirection * speed * Time.deltaTime); 
         

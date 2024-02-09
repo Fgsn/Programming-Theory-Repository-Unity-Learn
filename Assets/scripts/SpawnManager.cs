@@ -10,6 +10,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float xRange = 20;
     [SerializeField] private float yRange = 15;
     [SerializeField] private int pacKEnemyRange = 4;
+    [SerializeField] private PlayerController playerController { get; set; }
+
+    public void Init(PlayerController player)
+    {
+        playerController = player;
+    }
     private void Start()
     {
         InvokeRepeating("SpawnEnemyWave", startDelay, repeat);
@@ -21,9 +27,11 @@ public class SpawnManager : MonoBehaviour
         float y = Random.Range(-yRange, yRange);
         int packCount = Random.Range(0, pacKEnemyRange);
         int prefabIndex = Random.Range(0, prefabs.Count);
+        EnemyController currentEnemy = null;
         for( int i = 0; i < packCount;i++)
         {
-            Instantiate(prefabs[prefabIndex], new Vector2(x,y), prefabs[prefabIndex].transform.rotation);
+            currentEnemy = Instantiate(prefabs[prefabIndex], new Vector2(x,y), prefabs[prefabIndex].transform.rotation);
+            currentEnemy.Init(playerController);
         }
     }
 
