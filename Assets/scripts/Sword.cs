@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Sword : Weapon
+public class Sword : Weapon // INHERITANCE
 {
-    [SerializeField] private readonly float attackAngle = 120;
+    [SerializeField] private readonly float attackAngle = 120; // ENCAPSULATION
 
-    public override void Attack()
+    public override void Attack() // POLYMORPHISM
     {
         GameObject target = ChooseTarget();
 
@@ -23,7 +23,7 @@ public class Sword : Weapon
 
     }
 
-    protected override IEnumerator AttackMove(Vector2 pos)
+    protected override IEnumerator AttackMove(Vector2 pos) // POLYMORPHISM
     {
         Vector2 currentPos = pos;
         float z = 1;

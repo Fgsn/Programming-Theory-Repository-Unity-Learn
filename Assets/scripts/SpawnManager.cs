@@ -5,12 +5,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public List<EnemyController> prefabs;
-    [SerializeField] private float startDelay = 1.5f;
-    [SerializeField] private float repeat = 2f;
-    [SerializeField] private float xRange = 20;
-    [SerializeField] private float yRange = 15;
-    [SerializeField] private int pacKEnemyRange = 4;
-    [SerializeField] private PlayerController playerController { get; set; }
+    [SerializeField] private float startDelay = 1.5f; // ENCAPSULATION
+    [SerializeField] private float repeat = 2f; // ENCAPSULATION
+    [SerializeField] private float xRange = 20; // ENCAPSULATION
+    [SerializeField] private float yRange = 15; // ENCAPSULATION
+    [SerializeField] private int pacKEnemyRange = 4; // ENCAPSULATION
+    [SerializeField] private PlayerController playerController { get; set; } // ENCAPSULATION
 
     public void Init(PlayerController player)
     {

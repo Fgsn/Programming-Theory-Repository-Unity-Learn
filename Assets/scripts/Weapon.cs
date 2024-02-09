@@ -5,19 +5,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public  abstract class Weapon : MonoBehaviour
+public  abstract class Weapon : MonoBehaviour // ABSTRACTION
 {
-    [SerializeField] public int damage ;
-    [SerializeField] protected float attackCooldown;
-    [SerializeField] protected float attackSpeed;
-    [SerializeField] protected float attackRange;
-    [SerializeField] public bool isReady { get; protected set; } = true;
-    protected BoxCollider2D coll { get; set; }
-    protected CircleCollider2D field { get; set; }
+    [SerializeField] public int damage ; 
+    [SerializeField] protected float attackCooldown; // ENCAPSULATION
+    [SerializeField] protected float attackSpeed; // ENCAPSULATION
+    [SerializeField] protected float attackRange; // ENCAPSULATION
+    [SerializeField] public bool isReady { get; protected set; } = true; // ENCAPSULATION
+    protected BoxCollider2D coll { get; set; } // ENCAPSULATION
+    protected CircleCollider2D field { get; set; } // ENCAPSULATION
 
-    protected List<Collider2D> enemysOnRange = new List<Collider2D>();
+    protected List<Collider2D> enemysOnRange = new List<Collider2D>(); // ENCAPSULATION
 
-    private void Awake()
+    private void Awake() // ABSTRACTION
     {
         coll = GetComponent<BoxCollider2D>();
         field = GetComponent<CircleCollider2D>();
@@ -25,7 +25,7 @@ public  abstract class Weapon : MonoBehaviour
         coll.enabled = false;
     }
 
-    private void Update()
+    private void Update() // ABSTRACTION
     {
         if (isReady)
         {
@@ -34,7 +34,7 @@ public  abstract class Weapon : MonoBehaviour
             StartCoroutine(Cooldown(attackCooldown));
         }
     }
-    public virtual void Attack()
+    public virtual void Attack() // ABSTRACTION
     {
         GameObject target = ChooseTarget();
 
@@ -44,30 +44,30 @@ public  abstract class Weapon : MonoBehaviour
     }
 
 
-    protected virtual IEnumerator AttackMove(Vector2 pos)
+    protected virtual IEnumerator AttackMove(Vector2 pos) // ABSTRACTION
     {
         yield return null;
     }
-    protected IEnumerator Cooldown(float cooldown)
+    protected IEnumerator Cooldown(float cooldown) // ABSTRACTION
     {
         yield return new WaitForSeconds(cooldown);
         isReady = true;
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision) // ABSTRACTION
     {
         ContactFilter2D filter = new ContactFilter2D().NoFilter();
 
         field.OverlapCollider(filter, enemysOnRange);
     }
-    protected void OnTriggerExit2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision) // ABSTRACTION
     {
         ContactFilter2D filter = new ContactFilter2D().NoFilter();
 
         field.OverlapCollider(filter, enemysOnRange);
 
     }
-    protected GameObject ChooseTarget()
+    protected GameObject ChooseTarget() // ABSTRACTION ENCAPSULATION
     {
         float minDistance = float.MaxValue;
         GameObject target = null;

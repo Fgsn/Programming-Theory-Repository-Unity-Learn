@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spear : Weapon
+public class Spear : Weapon // INHERITANCE
 {
-    public override void Attack()
+    public override void Attack() // POLYMORPHISM
     {
         GameObject target = ChooseTarget();
 
@@ -18,7 +18,7 @@ public class Spear : Weapon
 
     }
 
-    protected override IEnumerator AttackMove(Vector2 pos)
+    protected override IEnumerator AttackMove(Vector2 pos) // POLYMORPHISM
     {
         Vector2 currentPos = transform.position;
         Vector2 toPos = pos;

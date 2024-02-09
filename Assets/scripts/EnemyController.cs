@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float speed = 2;
-    [SerializeField] private int live = 10;
-    [SerializeField] public int damage { get; private set; } = 5;
+    [SerializeField] private float speed = 2; // ENCAPSULATION
+    [SerializeField] private int live = 10; // ENCAPSULATION
+    [SerializeField] public int damage { get; private set; } = 5; // ENCAPSULATION
 
-    private PlayerController playerController;
+    private PlayerController playerController; // ENCAPSULATION
 
     public void Init(PlayerController player)
     {
