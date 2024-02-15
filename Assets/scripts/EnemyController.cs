@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("GG");
             live -= collision.gameObject.GetComponent<Weapon>().damage;
             if (live <= 0)
-                Destroy(gameObject);
+                gameObject.SetActive(false);
         }
 
     }

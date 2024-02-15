@@ -182,4 +182,4 @@ MonoBehaviour:
   damage: 7
   attackCooldown: 1
   attackSpeed: 4
-  attackRange: 4
+  attackRange: 2
